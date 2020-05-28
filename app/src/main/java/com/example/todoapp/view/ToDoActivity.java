@@ -1,8 +1,12 @@
 package com.example.todoapp.view;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingComponent;
 import androidx.databinding.DataBindingUtil;
@@ -21,8 +25,8 @@ public class ToDoActivity extends AppCompatActivity {
         TodoActivityBinding binding = DataBindingUtil.setContentView(this, R.layout.todo_activity);
         binding.setViewModel(viewModel);
         viewModel.onCreate();
-        getSupportActionBar().hide();
 
+        getSupportActionBar().hide();
 
 
     }
