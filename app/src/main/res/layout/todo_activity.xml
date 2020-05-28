@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.example.todoapp.viewmodel.ToDoViewModel" />
+    </data>
+
+    <RelativeLayout
+        android:id="@+id/todo"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="com.example.todoapp.view.ToDoActivity">
+
+        <com.github.clans.fab.FloatingActionMenu
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginRight="@dimen/right_fab_margin"
+            android:layout_marginBottom="@dimen/bottom_fab_margin"
+            app:menu_colorNormal="@color/fab_normal"
+            app:menu_colorPressed="@color/fab_pressed"
+            app:menu_colorRipple="@color/fab_pressed"
+            app:menu_fab_size="normal"
+            app:menu_icon="@drawable/ic_add_black"
+            app:menu_openDirection="up">
+
+            <com.github.clans.fab.FloatingActionButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_task_svg"
+                app:fab_colorNormal="@color/fab_normal"
+                app:fab_colorPressed="@color/fab_normal"
+                app:fab_label="@string/fab_task"
+                app:fab_size="mini" />
+
+            <com.github.clans.fab.FloatingActionButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_list_svg"
+                app:fab_colorNormal="@color/fab_normal"
+                app:fab_colorPressed="@color/fab_normal"
+                app:fab_label="@string/fab_list"
+                app:fab_size="mini" />
+
+        </com.github.clans.fab.FloatingActionMenu>
+
+
+    </RelativeLayout>
+
+
+</layout>

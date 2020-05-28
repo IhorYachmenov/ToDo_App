@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#6200EE</color>
+    <color name="colorPrimaryDark">#3700B3</color>
+    <color name="colorAccent">#03DAC5</color>
+
+    <!--Fab colors -->
+    <color name="fab_normal">#FFFFFF</color>
+    <color name="fab_pressed">#FF031CDA</color>
+
+    <!-- List label name -->
+
+    <color name="inbox_label_color">#EBEFF5</color>
+    <color name="work_label_color">#61DEA4</color>
+    <color name="shopping_label_color">#F45E6D</color>
+    <color name="family_label_color">#FFE761</color>
+    <color name="personal_label_color">#B678FF</color>
+
+</resources>

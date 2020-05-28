@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">ToDo App</string>
+
+    <!-- Fab action name -->
+
+    <string name="fab_task">Task</string>
+    <string name="fab_list">List</string>
+
+    <!-- List label name -->
+
+    <string name="inbox_label">Inbox</string>
+    <string name="work_label">Work</string>
+    <string name="shopping_label">Shopping</string>
+    <string name="family_label">Family</string>
+    <string name="personal_label">Personal</string>
+
+
+
+</resources>
