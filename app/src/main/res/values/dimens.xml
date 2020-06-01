@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="right_fab_margin">16dp</dimen>
-    <dimen name="bottom_fab_margin">44dp</dimen>
-
-    <dimen name="app_bar_label_top">30dp</dimen>
-    <dimen name="app_bar_label_left">60dp</dimen>
 
     <dimen name="app_bar_action_top">34dp</dimen>
     <dimen name="app_bar_action_right">12dp</dimen>
+    <dimen name="font_size_floatin_action_list">18sp</dimen>
+    <dimen name="font_size_app_bar_label">32sp</dimen>
+
+    <dimen name="margin_default">20dp</dimen>
+    <dimen name="margin_medium">10dp</dimen>
+    <dimen name="margin_small">5dp</dimen>
+    <dimen name="margin_big">40dp</dimen>
+
+
+
 </resources>

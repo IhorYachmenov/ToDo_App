@@ -13,6 +13,41 @@
     <string name="shopping_label">Shopping</string>
     <string name="family_label">Family</string>
     <string name="personal_label">Personal</string>
+    <string name="floating_menu_task">Task</string>
+    <string name="floating_menu_list">List</string>
+    <string name="app_bar_label">Today</string>
+
+    <string name="test">f your app is in full screen mode.the top most vie
+        w in the layout need to implement OnTouchListener, and now we can get the motion such as swipe down, up etc ..and if when the user swi
+        pe down you need to invoke actionBar.show(); which will make actionbar vi
+        sible. for example if you have a toolbar at the topmost of the layout..f your app is in full screen mode.the top most vie
+        w in the layout need to implement OnTouchListener, and now we can get the motion such as swipe down, up etc ..and if when the user swi
+        pe down you need to invoke actionBar.show(); which will make actionbar vi
+        sible. for example if you have a toolbar at the topmost of the layout...f your app is in full screen mode.the top most vie
+        w in the layout need to implement OnTouchListener, and now we can get the motion such as swipe down, up etc ..and if when the user swi
+        pe down you need to invoke actionBar.show(); which will make actionbar vi
+        sible. for example if you have a toolbar at the topmost of the layout...f your app is in full screen mode.the top most vie
+        w in the layout need to implement OnTouchListener, and now we can get the motion such as swipe down, up etc ..and if when the user swi
+        pe down you need to invoke actionBar.show(); which will make actionbar vi
+        sible. for example if you have a toolbar at the topmost of the layout...f your app is in full screen mode.the top most vie
+        w in the layout need to implement OnTouchListener, and now we can get the motion such as swipe down, up etc ..and if when the user swi
+        pe down you need to invoke actionBar.show(); which will make actionbar vi
+        sible. for example if you have a toolbar at the topmost of the layout...f your app is in full screen mode.the top most vie
+        w in the layout need to implement OnTouchListener, and now we can get the motion such as swipe down, up etc ..and if when the user swi
+        pe down you need to invoke actionBar.show(); which will make actionbar vi
+        sible. for example if you have a toolbar at the topmost of the layout...f your app is in full screen mode.the top most vie
+        w in the layout need to implement OnTouchListener, and now we can get the motion such as swipe down, up etc ..and if when the user swi
+        pe down you need to invoke actionBar.show(); which will make actionbar vi
+        sible. for example if you have a toolbar at the topmost of the layout...f your app is in full screen mode.the top most vie
+        w in the layout need to implement OnTouchListener, and now we can get the motion such as swipe down, up etc ..and if when the user swi
+        pe down you need to invoke actionBar.show(); which will make actionbar vi
+        sible. for example if you have a toolbar at the topmost of the layout...f your app is in full screen mode.the top most vie
+        w in the layout need to implement OnTouchListener, and now we can get the motion such as swipe down, up etc ..and if when the user swi
+        pe down you need to invoke actionBar.show(); which will make actionbar vi
+        sible. for example if you have a toolbar at the topmost of the layout...f your app is in full screen mode.the top most vie
+        w in the layout need to implement OnTouchListener, and now we can get the motion such as swipe down, up etc ..and if when the user swi
+        pe down you need to invoke actionBar.show(); which will make actionbar vi
+        sible. for example if you have a toolbar at the topmost of the layout....</string>
 
 
 

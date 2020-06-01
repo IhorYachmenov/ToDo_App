@@ -1,16 +1,26 @@
 package com.example.todoapp.view;
 
+import android.app.Dialog;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.Window;
 
 import androidx.annotation.Nullable;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import androidx.appcompat.widget.Toolbar;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.databinding.DataBindingUtil;
 
 import com.example.todoapp.R;
 import com.example.todoapp.databinding.TodoActivityBinding;
 import com.example.todoapp.viewmodel.ToDoViewModel;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 
 public class ToDoActivity extends AppCompatActivity {
@@ -25,8 +35,19 @@ public class ToDoActivity extends AppCompatActivity {
         binding.setViewModel(viewModel);
         viewModel.onCreate();
 
-        getSupportActionBar().hide();
+        openDialog();
 
+
+
+
+
+
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.toolbar_menu, menu);
+        return true;
     }
 
     @Override
@@ -47,5 +68,35 @@ public class ToDoActivity extends AppCompatActivity {
         viewModel.onCreate();
     }
 
+    public void openDialog() {
+
+        FloatingActionButton fab = findViewById(R.id.fab_main);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                final Dialog dialog = new Dialog(ToDoActivity.this, android.R.style.Theme_Translucent_NoTitleBar_Fullscreen);
+                dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+                dialog.setCancelable(false);
+                dialog.setContentView(R.layout.fragment_floating_button);
+                ColorDrawable dialogColor = new ColorDrawable(Color.WHITE);
+                dialogColor.setAlpha(200);
+                dialog.getWindow().setBackgroundDrawable(dialogColor);
+
+
+                FloatingActionButton dialogButton1 = (FloatingActionButton) dialog.findViewById(R.id.fab_fragment);
+                dialogButton1.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dialog.dismiss();
+                    }
+                });
+
+                dialog.show();
+
+            }
+        });
+
+    }
 
 }

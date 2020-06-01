@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="viewModel"
             type="com.example.todoapp.viewmodel.ToDoViewModel" />
@@ -15,72 +16,41 @@
         android:layout_height="match_parent"
         tools:context="com.example.todoapp.view.ToDoActivity">
 
-        <LinearLayout
-            android:layout_marginTop="20dp"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
+
+        <include layout="@layout/layout_app_bar" />
+
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent"
+            android:visibility="gone">
 
             <TextView
-                android:id="@+id/label"
-                android:layout_weight="1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Today"
-                android:textStyle="bold"
-                android:textSize="32dp"
-                android:layout_marginLeft="@dimen/app_bar_label_left"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="@string/test" />
 
-                android:textColor="@color/app_bat_text_color"
-                android:layout_gravity="center_vertical"/>
+        </ScrollView>
 
-            <ImageView
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:layout_gravity="center_vertical"
-
-                android:layout_marginRight="@dimen/app_bar_action_right"
-                android:src="@drawable/ic_app_bar_action"/>
-
-        </LinearLayout>
-
-        <com.github.clans.fab.FloatingActionMenu
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab_main"
             android:layout_width="wrap_content"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginRight="@dimen/right_fab_margin"
-            android:layout_marginBottom="@dimen/bottom_fab_margin"
-            app:menu_colorNormal="@color/fab_normal"
-            app:menu_colorPressed="@color/fab_pressed"
-            app:menu_colorRipple="@color/fab_pressed"
-            app:menu_fab_size="normal"
-            app:menu_icon="@drawable/ic_add_black"
-            app:menu_openDirection="up">
+            android:layout_marginRight="@dimen/margin_medium"
+            android:layout_marginBottom="@dimen/margin_big"
+            android:background="@drawable/shape_circle_fab"
+            android:backgroundTint="@color/white"
+            android:elevation="0dp"
+            android:src="@drawable/ic_add_blue"
+            app:backgroundTint="@color/white"
+            app:elevation="0dp"
+            app:fab_colorDisabled="@color/white"
+            app:fab_colorNormal="@color/white"
+            app:fab_colorPressed="@color/white"
+            app:fab_colorRipple="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" >
 
-            <com.github.clans.fab.FloatingActionButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_task_svg"
-                app:fab_colorNormal="@color/fab_normal"
-                app:fab_colorPressed="@color/fab_normal"
-                app:fab_label="@string/fab_task"
-                app:fab_size="mini" />
-
-            <com.github.clans.fab.FloatingActionButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_list_svg"
-                app:fab_colorNormal="@color/fab_normal"
-                app:fab_colorPressed="@color/fab_normal"
-                app:fab_label="@string/fab_list"
-                app:fab_size="mini" />
-
-        </com.github.clans.fab.FloatingActionMenu>
+        </com.google.android.material.floatingactionbutton.FloatingActionButton>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
