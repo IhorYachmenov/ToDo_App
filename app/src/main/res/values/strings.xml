@@ -16,6 +16,9 @@
     <string name="floating_menu_task">Task</string>
     <string name="floating_menu_list">List</string>
     <string name="app_bar_label">Today</string>
+    <string name="list_category_name">Lists</string>
+
+
 
     <string name="test">f your app is in full screen mode.the top most vie
         w in the layout need to implement OnTouchListener, and now we can get the motion such as swipe down, up etc ..and if when the user swi
