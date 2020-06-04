@@ -8,6 +8,8 @@
     <dimen name="font_list_label_name">19sp</dimen>
     <dimen name="font_list_label_task">14sp</dimen>
     <dimen name="fons_size_list_category_label">16sp</dimen>
+    <dimen name="fons_size_dialog_fragment_task">16sp</dimen>
+    <dimen name="fons_size_dialog_fragment_label">32sp</dimen>
 
     <dimen name="margin_default">20dp</dimen>
     <dimen name="margin_medium">10dp</dimen>

@@ -14,43 +14,154 @@
         android:id="@+id/todo"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+
         tools:context="com.example.todoapp.view.ToDoActivity">
 
 
-        <include layout="@layout/layout_app_bar" />
-
-        <ScrollView
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/app_bar"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:visibility="gone">
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-            <TextView
+
+            <include layout="@layout/layout_app_bar" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <LinearLayout
+            android:id="@+id/center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/footer"
+            android:layout_below="@id/app_bar"
+
+            android:orientation="vertical"
+
+            app:layout_constraintTop_toBottomOf="@id/app_bar"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <!--
+            Inside this limited height layout, there is a list with height
+            wrap_content so it can grow as much as it needs INSIDE the
+            layout (through scrolling).
+            -->
+            <ListView
+                android:id="@+id/RecordStudy_StudyList"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="@string/test" />
+                android:layout_height="wrap_content"
+                android:elevation="5dp"
 
-        </ScrollView>
+                android:entries="@array/dummy_data" />
+
+        </LinearLayout>
+
+
+        <RelativeLayout
+            android:background="@color/white"
+            android:id="@+id/footer"
+            android:layout_width="match_parent"
+            android:layout_height="230dp"
+
+
+
+
+
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/list_category_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="@dimen/margin_big"
+                android:layout_marginTop="@dimen/margin_default"
+                android:layout_marginBottom="@dimen/margin_default">
+
+                <TextView
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/list_category_name"
+                    android:textColor="@color/grey"
+                    android:textSize="@dimen/fons_size_list_category_label"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+
+                android:id="@+id/list_of_category"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/list_category_label">
+
+
+                <ScrollView
+                    android:id="@+id/scroll_category"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <include layout="@layout/layout_list_category" />
+
+                </ScrollView>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </RelativeLayout>
+
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fab_main"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+
             android:layout_marginRight="@dimen/margin_medium"
             android:layout_marginBottom="@dimen/margin_big"
             android:background="@drawable/shape_circle_fab"
             android:backgroundTint="@color/white"
+            android:clickable="true"
             android:elevation="0dp"
+            android:focusable="true"
             android:src="@drawable/ic_add_blue"
             app:backgroundTint="@color/white"
-            app:elevation="0dp"
+            app:elevation="5dp"
             app:fab_colorDisabled="@color/white"
             app:fab_colorNormal="@color/white"
             app:fab_colorPressed="@color/white"
             app:fab_colorRipple="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" >
+            app:layout_constraintEnd_toEndOf="parent">
 
         </com.google.android.material.floatingactionbutton.FloatingActionButton>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <include layout="@layout/fragment_list_category" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

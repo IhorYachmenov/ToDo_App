@@ -21,6 +21,9 @@
         <activity android:name=".view.ToDoActivity">
         </activity>
 
+        <activity android:name=".view.ListOfCategoryActivity">
+        </activity>
+
 
 
 
