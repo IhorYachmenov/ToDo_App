@@ -237,7 +237,7 @@ public class ToDoActivity extends AppCompatActivity {
 
     private void showPopupMenu(final View v) {
         PopupMenu popupMenu = new PopupMenu(this, v);
-        popupMenu.inflate(R.menu.popupmenu);
+        popupMenu.inflate(R.menu.menu_todo_activity);
 
         popupMenu
                 .setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {

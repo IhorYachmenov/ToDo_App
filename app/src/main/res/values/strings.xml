@@ -19,7 +19,7 @@
     <string name="list_category_name">Lists</string>
     <string name="button_log_out_main_screen">Log out</string>
     <string name="button_delete_main_screen">Delete</string>
-    <string name="label_delete_button_main_screen">You are deleted notification is successful.</string>
+    <string name="label_delete_button_main_screen">You are deleted notes is successful.</string>
     <string name="label_log_out_button_main_screen">You are logout is successful.</string>
 
     <string-array name="dummy_data" >
@@ -44,40 +44,6 @@
         <item>Nine</item>
         <item>Ten</item>
     </string-array>
-
-
-
-    <string name="test">f your app is in full screen mode.the top most vie
-        w in the layout need to implement OnTouchListener, and now we can get the motion such as swipe down, up etc ..and if when the user swi
-        pe down you need to invoke actionBar.show(); which will make actionbar vi
-        sible. for example if you have a toolbar at the topmost of the layout..f your app is in full screen mode.the top most vie
-        w in the layout need to implement OnTouchListener, and now we can get the motion such as swipe down, up etc ..and if when the user swi
-        pe down you need to invoke actionBar.show(); which will make actionbar vi
-        sible. for example if you have a toolbar at the topmost of the layout...f your app is in full screen mode.the top most vie
-        w in the layout need to implement OnTouchListener, and now we can get the motion such as swipe down, up etc ..and if when the user swi
-        pe down you need to invoke actionBar.show(); which will make actionbar vi
-        sible. for example if you have a toolbar at the topmost of the layout...f your app is in full screen mode.the top most vie
-        w in the layout need to implement OnTouchListener, and now we can get the motion such as swipe down, up etc ..and if when the user swi
-        pe down you need to invoke actionBar.show(); which will make actionbar vi
-        sible. for example if you have a toolbar at the topmost of the layout...f your app is in full screen mode.the top most vie
-        w in the layout need to implement OnTouchListener, and now we can get the motion such as swipe down, up etc ..and if when the user swi
-        pe down you need to invoke actionBar.show(); which will make actionbar vi
-        sible. for example if you have a toolbar at the topmost of the layout...f your app is in full screen mode.the top most vie
-        w in the layout need to implement OnTouchListener, and now we can get the motion such as swipe down, up etc ..and if when the user swi
-        pe down you need to invoke actionBar.show(); which will make actionbar vi
-        sible. for example if you have a toolbar at the topmost of the layout...f your app is in full screen mode.the top most vie
-        w in the layout need to implement OnTouchListener, and now we can get the motion such as swipe down, up etc ..and if when the user swi
-        pe down you need to invoke actionBar.show(); which will make actionbar vi
-        sible. for example if you have a toolbar at the topmost of the layout...f your app is in full screen mode.the top most vie
-        w in the layout need to implement OnTouchListener, and now we can get the motion such as swipe down, up etc ..and if when the user swi
-        pe down you need to invoke actionBar.show(); which will make actionbar vi
-        sible. for example if you have a toolbar at the topmost of the layout...f your app is in full screen mode.the top most vie
-        w in the layout need to implement OnTouchListener, and now we can get the motion such as swipe down, up etc ..and if when the user swi
-        pe down you need to invoke actionBar.show(); which will make actionbar vi
-        sible. for example if you have a toolbar at the topmost of the layout...f your app is in full screen mode.the top most vie
-        w in the layout need to implement OnTouchListener, and now we can get the motion such as swipe down, up etc ..and if when the user swi
-        pe down you need to invoke actionBar.show(); which will make actionbar vi
-        sible. for example if you have a toolbar at the topmost of the layout....</string>
 
 
 
