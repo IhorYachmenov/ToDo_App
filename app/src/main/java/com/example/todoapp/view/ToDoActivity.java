@@ -5,13 +5,17 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import androidx.appcompat.widget.PopupMenu;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.databinding.DataBindingUtil;
 
@@ -19,6 +23,7 @@ import com.example.todoapp.R;
 import com.example.todoapp.databinding.TodoActivityBinding;
 import com.example.todoapp.viewmodel.ToDoViewModel;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.auth.FirebaseAuth;
 
 
 public class ToDoActivity extends AppCompatActivity {
@@ -37,6 +42,9 @@ public class ToDoActivity extends AppCompatActivity {
     // Object for holding data for category activity
     CategoryData putData;
 
+    // Main screen menu
+    TextView dotButton;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,6 +52,7 @@ public class ToDoActivity extends AppCompatActivity {
         TodoActivityBinding binding = DataBindingUtil.setContentView(this, R.layout.todo_activity);
         binding.setViewModel(viewModel);
         viewModel.onCreate();
+        dotButton = findViewById(R.id.app_bar_action);
 
         openDialog();
 
@@ -52,6 +61,13 @@ public class ToDoActivity extends AppCompatActivity {
         openCategoryShoppingDialogFragment();
         openCategoryFamilyDialogFragment();
         openCategoryPersonalDialogFragment();
+
+        dotButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showPopupMenu(v);
+            }
+        });
 
     }
 
@@ -219,12 +235,41 @@ public class ToDoActivity extends AppCompatActivity {
     }
 
 
-    @Override
-    public void onBackPressed() {
+    private void showPopupMenu(final View v) {
+        PopupMenu popupMenu = new PopupMenu(this, v);
+        popupMenu.inflate(R.menu.popupmenu);
+
+        popupMenu
+                .setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                    @Override
+                    public boolean onMenuItemClick(MenuItem item) {
+                        switch (item.getItemId()) {
+                            case R.id.log_out:
+                                Toast.makeText(getApplicationContext(),
+                                        getResources().getString(R.string.label_log_out_button_main_screen),
+                                        Toast.LENGTH_SHORT).show();
+                                logOut(v);
+                                return true;
+                            case R.id.delete:
+                                Toast.makeText(getApplicationContext(),
+                                        getResources().getString(R.string.label_delete_button_main_screen),
+                                        Toast.LENGTH_SHORT).show();
+                                return true;
+                            default:
+                                return false;
+                        }
+                    }
+                });
 
 
+        popupMenu.show();
     }
 
+    public void logOut(View view) {
+        FirebaseAuth.getInstance().signOut();//logout
+        startActivity(new Intent(getApplicationContext(),LoginActivity.class));
+        finish();
+    }
 
 
 

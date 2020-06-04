@@ -17,6 +17,10 @@
     <string name="floating_menu_list">List</string>
     <string name="app_bar_label">Today</string>
     <string name="list_category_name">Lists</string>
+    <string name="button_log_out_main_screen">Log out</string>
+    <string name="button_delete_main_screen">Delete</string>
+    <string name="label_delete_button_main_screen">You are deleted notification is successful.</string>
+    <string name="label_log_out_button_main_screen">You are logout is successful.</string>
 
     <string-array name="dummy_data" >
         <item>One</item>
