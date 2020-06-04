@@ -47,11 +47,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent">
 
-            <!--
-            Inside this limited height layout, there is a list with height
-            wrap_content so it can grow as much as it needs INSIDE the
-            layout (through scrolling).
-            -->
             <ListView
                 android:id="@+id/RecordStudy_StudyList"
                 android:layout_width="match_parent"
@@ -68,10 +63,6 @@
             android:id="@+id/footer"
             android:layout_width="match_parent"
             android:layout_height="230dp"
-
-
-
-
 
             android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -151,17 +142,6 @@
             app:layout_constraintEnd_toEndOf="parent">
 
         </com.google.android.material.floatingactionbutton.FloatingActionButton>
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/container"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_centerInParent="true"
-            android:orientation="vertical"
-            android:visibility="gone">
-
-            <include layout="@layout/fragment_list_category" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
