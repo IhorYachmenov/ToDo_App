@@ -1,8 +1,10 @@
 package com.example.todoapp.view;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.CalendarView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.TimePicker;
@@ -29,6 +31,8 @@ public class NewTaskActivity extends AppCompatActivity {
     ConstraintLayout layoutTime;
     ConstraintLayout layoutCategory;
 
+    CalendarView calendar;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,6 +40,10 @@ public class NewTaskActivity extends AppCompatActivity {
 
         time = findViewById(R.id.time);
         time.setIs24HourView(true);
+        calendar = findViewById(R.id.calendarView);
+        calendar.setMinDate(System.currentTimeMillis());
+
+
 
         bottomButtons();
     }

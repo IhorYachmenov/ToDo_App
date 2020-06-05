@@ -15,4 +15,9 @@
         <item name="android:windowBackground">@android:color/transparent</item>
     </style>
 
+    <style name="CalenderViewDateCustomText" parent="android:TextAppearance.DeviceDefault.Small">
+        <item name="android:textColor">@color/blue</item>
+        <item name="colorAccent">@color/blue</item>
+    </style>
+
 </resources>
