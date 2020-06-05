@@ -21,6 +21,9 @@
     <string name="button_delete_main_screen">Delete</string>
     <string name="label_delete_button_main_screen">You are deleted notes is successful.</string>
     <string name="label_log_out_button_main_screen">You are logout is successful.</string>
+    <string name="new_task_done_button">Done</string>
+    <string name="new_task_cancel_button">Cancel</string>
+
 
     <string-array name="dummy_data" >
         <item>One</item>

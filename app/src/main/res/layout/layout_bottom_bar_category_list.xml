@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layout_new_task_bottom_list_category"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:visibility="gone"
+    tools:visibility="visible">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/new_task_inbox_category"
+        android:layout_width="match_parent"
+        android:layout_height="69dp"
+        android:layout_marginLeft="@dimen/margin_medium"
+        android:layout_marginTop="@dimen/margin_small"
+        android:layout_marginRight="@dimen/margin_medium"
+        android:background="@drawable/shape_rectangle_task_inbox"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/inbox_task_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin_default"
+            android:layout_marginTop="@dimen/margin_medium"
+            android:text="@string/inbox_label"
+            android:textColor="@color/black"
+            android:textSize="@dimen/font_list_label_name"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/inbox_task_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin_default"
+            android:text="1 task"
+            android:textColor="@color/grey"
+            android:textSize="@dimen/font_list_label_task"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/inbox_task_label" />
+
+        <TextView
+            android:id="@+id/new_task_inbox_checked"
+            android:layout_width="@dimen/size_new_task_bottom_checked"
+            android:layout_height="@dimen/size_new_task_bottom_checked"
+            android:layout_marginRight="@dimen/margin_default"
+            android:background="@drawable/ic_new_task_checked"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/new_task_work_category"
+        android:layout_width="match_parent"
+        android:layout_height="69dp"
+        android:layout_marginLeft="@dimen/margin_medium"
+        android:layout_marginTop="@dimen/margin_small"
+        android:layout_marginRight="@dimen/margin_medium"
+        android:background="@drawable/shape_rectangle_task_work"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/new_task_inbox_category">
+
+        <TextView
+            android:id="@+id/work_task_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin_default"
+            android:layout_marginTop="@dimen/margin_medium"
+            android:text="@string/work_label"
+            android:textColor="@color/white"
+            android:textSize="@dimen/font_list_label_name"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/work_task_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin_default"
+            android:text="1 task"
+            android:textColor="@color/grey"
+            android:textSize="@dimen/font_list_label_task"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/work_task_label" />
+
+        <TextView
+            android:id="@+id/new_task_work_checked"
+            android:layout_width="@dimen/size_new_task_bottom_checked"
+            android:layout_height="@dimen/size_new_task_bottom_checked"
+            android:layout_marginRight="@dimen/margin_default"
+            android:background="@drawable/ic_new_task_checked"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/new_task_shopping_category"
+        android:layout_width="match_parent"
+        android:layout_height="69dp"
+        android:layout_marginLeft="@dimen/margin_medium"
+        android:layout_marginTop="@dimen/margin_small"
+        android:layout_marginRight="@dimen/margin_medium"
+        android:background="@drawable/shape_rectangle_task_shopping"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/new_task_work_category">
+
+        <TextView
+            android:id="@+id/shopping_task_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin_default"
+            android:layout_marginTop="@dimen/margin_medium"
+            android:text="@string/shopping_label"
+            android:textColor="@color/white"
+            android:textSize="@dimen/font_list_label_name"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/shopping_task_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin_default"
+            android:text="1 task"
+            android:textColor="@color/grey"
+            android:textSize="@dimen/font_list_label_task"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/shopping_task_label" />
+
+        <TextView
+            android:id="@+id/new_task_shopping_checked"
+            android:layout_width="@dimen/size_new_task_bottom_checked"
+            android:layout_height="@dimen/size_new_task_bottom_checked"
+            android:layout_marginRight="@dimen/margin_default"
+            android:background="@drawable/ic_new_task_checked"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/new_task_family_category"
+        android:layout_width="match_parent"
+        android:layout_height="69dp"
+        android:layout_marginLeft="@dimen/margin_medium"
+        android:layout_marginTop="@dimen/margin_small"
+        android:layout_marginRight="@dimen/margin_medium"
+        android:background="@drawable/shape_rectangle_task_family"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/new_task_shopping_category">
+
+        <TextView
+            android:id="@+id/family_task_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin_default"
+            android:layout_marginTop="@dimen/margin_medium"
+            android:text="@string/family_label"
+            android:textColor="@color/black"
+            android:textSize="@dimen/font_list_label_name"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/family_task_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin_default"
+            android:text="1 task"
+            android:textColor="@color/grey"
+            android:textSize="@dimen/font_list_label_task"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/family_task_label" />
+
+        <TextView
+            android:id="@+id/new_task_family_checked"
+            android:layout_width="@dimen/size_new_task_bottom_checked"
+            android:layout_height="@dimen/size_new_task_bottom_checked"
+            android:layout_marginRight="@dimen/margin_default"
+            android:background="@drawable/ic_new_task_checked"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/new_task_personal_category"
+        android:layout_width="match_parent"
+        android:layout_height="69dp"
+        android:layout_marginLeft="@dimen/margin_medium"
+        android:layout_marginTop="@dimen/margin_small"
+        android:layout_marginRight="@dimen/margin_medium"
+        android:background="@drawable/shape_rectangle_task_personal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/new_task_family_category">
+
+        <TextView
+            android:id="@+id/personal_task_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin_default"
+            android:layout_marginTop="@dimen/margin_medium"
+            android:text="@string/personal_label"
+            android:textColor="@color/white"
+            android:textSize="@dimen/font_list_label_name"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/personal_task_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin_default"
+            android:text="1 task"
+            android:textColor="@color/white"
+            android:textSize="@dimen/font_list_label_task"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/personal_task_label" />
+
+        <TextView
+            android:id="@+id/new_task_personal_checked"
+            android:layout_width="@dimen/size_new_task_bottom_checked"
+            android:layout_height="@dimen/size_new_task_bottom_checked"
+            android:layout_marginRight="@dimen/margin_default"
+            android:background="@drawable/ic_new_task_checked"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

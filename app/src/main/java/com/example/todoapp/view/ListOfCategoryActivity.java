@@ -64,6 +64,24 @@ public class ListOfCategoryActivity extends AppCompatActivity {
                     }
                 });
 
+                ConstraintLayout task = (ConstraintLayout) dialog.findViewById(R.id.task_newtask);
+                ConstraintLayout list = (ConstraintLayout) dialog.findViewById(R.id.list_newtask);
+                task.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent task = new Intent(ListOfCategoryActivity.this, NewTaskActivity.class);
+                        startActivity(task);
+                    }
+                });
+
+                list.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent task = new Intent(ListOfCategoryActivity.this, NewTaskActivity.class);
+                        startActivity(task);
+                    }
+                });
+
                 dialog.show();
 
             }

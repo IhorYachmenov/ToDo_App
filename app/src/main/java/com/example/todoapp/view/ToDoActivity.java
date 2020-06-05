@@ -45,6 +45,8 @@ public class ToDoActivity extends AppCompatActivity {
     // Main screen menu
     TextView dotButton;
 
+
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -114,6 +116,26 @@ public class ToDoActivity extends AppCompatActivity {
                         dialog.dismiss();
                     }
                 });
+
+
+                ConstraintLayout task = (ConstraintLayout) dialog.findViewById(R.id.task_newtask);
+                ConstraintLayout list = (ConstraintLayout) dialog.findViewById(R.id.list_newtask);
+                task.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent task = new Intent(ToDoActivity.this, NewTaskActivity.class);
+                        startActivity(task);
+                    }
+                });
+
+                list.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent task = new Intent(ToDoActivity.this, NewTaskActivity.class);
+                        startActivity(task);
+                    }
+                });
+
 
                 dialog.show();
 

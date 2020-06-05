@@ -10,11 +10,17 @@
     <dimen name="fons_size_list_category_label">16sp</dimen>
     <dimen name="fons_size_dialog_fragment_task">16sp</dimen>
     <dimen name="fons_size_dialog_fragment_label">32sp</dimen>
+    <dimen name="fons_size_new_task_app_bur_button">18sp</dimen>
+    <dimen name="fons_size_new_task_bottom_bur_button">15sp</dimen>
+
 
     <dimen name="margin_default">20dp</dimen>
     <dimen name="margin_medium">10dp</dimen>
     <dimen name="margin_small">5dp</dimen>
     <dimen name="margin_big">40dp</dimen>
+
+    <dimen name="size_new_task_notification">24dp</dimen>
+    <dimen name="size_new_task_bottom_checked">28dp</dimen>
 
 
 

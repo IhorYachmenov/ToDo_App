@@ -24,6 +24,8 @@
         <activity android:name=".view.ListOfCategoryActivity">
         </activity>
 
+        <activity android:name=".view.NewTaskActivity">
+        </activity>
 
 
 

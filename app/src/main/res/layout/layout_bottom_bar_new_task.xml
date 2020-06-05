@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/footer_checked_category"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <View
+        android:id="@+id/line"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/grey"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/bottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/line">
+
+        <TextView
+            android:id="@+id/calendar"
+            android:layout_width="@dimen/size_new_task_notification"
+            android:layout_height="@dimen/size_new_task_notification"
+            android:layout_marginLeft="@dimen/margin_medium"
+            android:layout_marginTop="@dimen/margin_default"
+            android:background="@drawable/ic_calendar_off"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/alarm"
+            android:layout_width="@dimen/size_new_task_notification"
+            android:layout_height="@dimen/size_new_task_notification"
+            android:layout_marginLeft="@dimen/margin_default"
+            android:layout_marginTop="@dimen/margin_default"
+            android:background="@drawable/ic_alarm_off"
+            app:layout_constraintStart_toEndOf="@id/calendar"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <RelativeLayout
+            android:id="@+id/check_box_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_default"
+            android:layout_marginRight="@dimen/margin_medium"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/bottom_bar_label_category"
+                android:layout_width="wrap_content"
+                android:textColor="@color/grey"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentLeft="true"
+                android:layout_marginRight="@dimen/margin_small"
+                android:text="@string/inbox_label"
+                android:textSize="@dimen/fons_size_new_task_bottom_bur_button" />
+
+            <TextView
+                android:id="@+id/bottom_bar_circle_category"
+                android:layout_width="12dp"
+                android:layout_height="12dp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/margin_small"
+                android:layout_toRightOf="@id/bottom_bar_label_category"
+                android:background="@drawable/shape_circle_botom_bar_category"
+                android:backgroundTint="@color/black"
+                android:textSize="@dimen/fons_size_new_task_bottom_bur_button" />
+
+        </RelativeLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
