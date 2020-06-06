@@ -1,19 +1,20 @@
 package com.example.todoapp.view;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.CalendarView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.example.todoapp.R;
+import com.example.todoapp.model.NewTaskCategory;
 
 public class NewTaskActivity extends AppCompatActivity {
 
@@ -33,6 +34,13 @@ public class NewTaskActivity extends AppCompatActivity {
 
     CalendarView calendar;
 
+    // Checked states
+
+    TextView inboxChecker, workChecker, shoppingChecker, personalChecker, familyChecker;
+    ConstraintLayout inboxCategory, workCategory, shoppingCategory, personalCategory, familyCategory;
+    Boolean inbox, work, shopping, family, person;
+    NewTaskCategory isChecked;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,6 +54,9 @@ public class NewTaskActivity extends AppCompatActivity {
 
 
         bottomButtons();
+
+
+        checkCategory();
     }
 
     @Override
@@ -107,6 +118,157 @@ public class NewTaskActivity extends AppCompatActivity {
                 }
             }
         });
+
+    }
+
+    public void checkCategory() {
+        isChecked = new NewTaskCategory();
+
+        inboxChecker = findViewById(R.id.new_task_inbox_checked);
+        workChecker = findViewById(R.id.new_task_work_checked);
+        shoppingChecker = findViewById(R.id.new_task_shopping_checked);
+        familyChecker = findViewById(R.id.new_task_family_checked);
+        personalChecker = findViewById(R.id.new_task_personal_checked);
+
+        inboxCategory = findViewById(R.id.new_task_inbox_category);
+        workCategory = findViewById(R.id.new_task_work_category);
+        shoppingCategory = findViewById(R.id.new_task_shopping_category);
+        familyCategory = findViewById(R.id.new_task_family_category);
+        personalCategory = findViewById(R.id.new_task_personal_category);
+
+
+        inboxCategory.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(inboxCategory.getVisibility() == View.VISIBLE) {
+                    if (isChecked.getCheckedStatus() != true) {
+                        isChecked.setCheckedStatus(true);
+
+                        isChecked.setInboxStatus(true);
+                        isChecked.setWorkStatus(false);
+                        isChecked.setShoppingStatus(false);
+                        isChecked.setFamilyStatus(false);
+                        isChecked.setPersonalStatus(false);
+
+                        inboxChecker.setVisibility(View.VISIBLE);
+                        workChecker.setVisibility(View.GONE);
+                        shoppingChecker.setVisibility(View.GONE);
+                        familyChecker.setVisibility(View.GONE);
+                        personalChecker.setVisibility(View.GONE);
+                        isChecked.setCheckedStatus(false);
+
+                    }
+
+                }
+            }
+        });
+
+        workCategory.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(workCategory.getVisibility() == View.VISIBLE) {
+                    if (isChecked.getCheckedStatus() != true) {
+                        isChecked.setCheckedStatus(true);
+
+                        isChecked.setInboxStatus(false);
+                        isChecked.setWorkStatus(true);
+                        isChecked.setShoppingStatus(false);
+                        isChecked.setFamilyStatus(false);
+                        isChecked.setPersonalStatus(false);
+
+                        inboxChecker.setVisibility(View.GONE);
+                        workChecker.setVisibility(View.VISIBLE);
+                        shoppingChecker.setVisibility(View.GONE);
+                        familyChecker.setVisibility(View.GONE);
+                        personalChecker.setVisibility(View.GONE);
+                        isChecked.setCheckedStatus(false);
+
+                    }
+
+                }
+            }
+        });
+
+        shoppingCategory.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(shoppingCategory.getVisibility() == View.VISIBLE) {
+                    if (isChecked.getCheckedStatus() != true) {
+                        isChecked.setCheckedStatus(true);
+
+                        isChecked.setInboxStatus(false);
+                        isChecked.setWorkStatus(false);
+                        isChecked.setShoppingStatus(true);
+                        isChecked.setFamilyStatus(false);
+                        isChecked.setPersonalStatus(false);
+
+                        inboxChecker.setVisibility(View.GONE);
+                        workChecker.setVisibility(View.GONE);
+                        shoppingChecker.setVisibility(View.VISIBLE);
+                        familyChecker.setVisibility(View.GONE);
+                        personalChecker.setVisibility(View.GONE);
+                        isChecked.setCheckedStatus(false);
+
+                    }
+
+                }
+            }
+        });
+
+        familyCategory.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(familyCategory.getVisibility() == View.VISIBLE) {
+                    if (isChecked.getCheckedStatus() != true) {
+                        isChecked.setCheckedStatus(true);
+
+                        isChecked.setInboxStatus(false);
+                        isChecked.setWorkStatus(false);
+                        isChecked.setShoppingStatus(false);
+                        isChecked.setFamilyStatus(true);
+                        isChecked.setPersonalStatus(false);
+
+                        inboxChecker.setVisibility(View.GONE);
+                        workChecker.setVisibility(View.GONE);
+                        shoppingChecker.setVisibility(View.GONE);
+                        familyChecker.setVisibility(View.VISIBLE);
+                        personalChecker.setVisibility(View.GONE);
+                        isChecked.setCheckedStatus(false);
+
+                    }
+
+                }
+            }
+        });
+
+        personalCategory.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(personalCategory.getVisibility() == View.VISIBLE) {
+                    if (isChecked.getCheckedStatus() != true) {
+                        isChecked.setCheckedStatus(true);
+
+                        isChecked.setInboxStatus(false);
+                        isChecked.setWorkStatus(false);
+                        isChecked.setShoppingStatus(false);
+                        isChecked.setFamilyStatus(false);
+                        isChecked.setPersonalStatus(true);
+
+                        inboxChecker.setVisibility(View.GONE);
+                        workChecker.setVisibility(View.GONE);
+                        shoppingChecker.setVisibility(View.GONE);
+                        familyChecker.setVisibility(View.GONE);
+                        personalChecker.setVisibility(View.VISIBLE);
+                        isChecked.setCheckedStatus(false);
+
+                    }
+
+                }
+            }
+        });
+
+
+
 
     }
 }

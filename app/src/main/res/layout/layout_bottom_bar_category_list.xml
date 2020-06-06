@@ -50,9 +50,11 @@
             android:layout_height="@dimen/size_new_task_bottom_checked"
             android:layout_marginRight="@dimen/margin_default"
             android:background="@drawable/ic_new_task_checked"
+            android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:visibility="visible" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -98,9 +100,11 @@
             android:layout_height="@dimen/size_new_task_bottom_checked"
             android:layout_marginRight="@dimen/margin_default"
             android:background="@drawable/ic_new_task_checked"
+            android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:visibility="visible" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -146,9 +150,11 @@
             android:layout_height="@dimen/size_new_task_bottom_checked"
             android:layout_marginRight="@dimen/margin_default"
             android:background="@drawable/ic_new_task_checked"
+            android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:visibility="visible" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -194,9 +200,11 @@
             android:layout_height="@dimen/size_new_task_bottom_checked"
             android:layout_marginRight="@dimen/margin_default"
             android:background="@drawable/ic_new_task_checked"
+            android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:visibility="visible" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -242,9 +250,11 @@
             android:layout_height="@dimen/size_new_task_bottom_checked"
             android:layout_marginRight="@dimen/margin_default"
             android:background="@drawable/ic_new_task_checked"
+            android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:visibility="visible" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

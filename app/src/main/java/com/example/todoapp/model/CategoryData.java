@@ -1,4 +1,4 @@
-package com.example.todoapp.view;
+package com.example.todoapp.model;
 
 import java.io.Serializable;
 

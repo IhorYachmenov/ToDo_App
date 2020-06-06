@@ -17,18 +17,19 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import androidx.appcompat.widget.PopupMenu;
 import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.databinding.DataBindingUtil;
+
 
 import com.example.todoapp.R;
-import com.example.todoapp.databinding.TodoActivityBinding;
-import com.example.todoapp.viewmodel.ToDoViewModel;
+
+import com.example.todoapp.model.CategoryData;
+
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 
 
 public class ToDoActivity extends AppCompatActivity {
 
-    ToDoViewModel viewModel = new ToDoViewModel();
+
 
     FloatingActionButton fab;
 
@@ -50,10 +51,8 @@ public class ToDoActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.todo_activity);
 
-        TodoActivityBinding binding = DataBindingUtil.setContentView(this, R.layout.todo_activity);
-        binding.setViewModel(viewModel);
-        viewModel.onCreate();
         dotButton = findViewById(R.id.app_bar_action);
 
         openDialog();
@@ -74,24 +73,6 @@ public class ToDoActivity extends AppCompatActivity {
     }
 
 
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        viewModel.onCreate();
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        viewModel.onResume();
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        viewModel.onCreate();
-    }
 
     public void openDialog() {
 

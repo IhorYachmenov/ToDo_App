@@ -14,6 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.example.todoapp.R;
+import com.example.todoapp.model.CategoryData;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class ListOfCategoryActivity extends AppCompatActivity {
