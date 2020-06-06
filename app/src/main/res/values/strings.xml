@@ -8,6 +8,7 @@
 
     <!-- List label name -->
 
+    <string name="category_label">Category</string>
     <string name="inbox_label">Inbox</string>
     <string name="work_label">Work</string>
     <string name="shopping_label">Shopping</string>

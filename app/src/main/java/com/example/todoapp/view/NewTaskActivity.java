@@ -14,20 +14,20 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.example.todoapp.R;
+import com.example.todoapp.model.CategoryData;
 import com.example.todoapp.model.NewTaskCategory;
+import com.example.todoapp.model.VisibilityOfListNewTask;
 
 public class NewTaskActivity extends AppCompatActivity {
 
     TimePicker time;
 
     // Bottom bar button
-
     TextView setData;
     TextView setTime;
     RelativeLayout setCategory;
 
     // Bottom bar layout
-
     ConstraintLayout layoutData;
     ConstraintLayout layoutTime;
     ConstraintLayout layoutCategory;
@@ -35,11 +35,10 @@ public class NewTaskActivity extends AppCompatActivity {
     CalendarView calendar;
 
     // Checked states
-
     TextView inboxChecker, workChecker, shoppingChecker, personalChecker, familyChecker;
     ConstraintLayout inboxCategory, workCategory, shoppingCategory, personalCategory, familyCategory;
-    Boolean inbox, work, shopping, family, person;
     NewTaskCategory isChecked;
+    TextView labelCheckedCategory, colorCheckedCategory;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -53,10 +52,13 @@ public class NewTaskActivity extends AppCompatActivity {
 
 
 
+
         bottomButtons();
 
 
         checkCategory();
+
+        getIntentDataFromFAB();
     }
 
     @Override
@@ -136,6 +138,9 @@ public class NewTaskActivity extends AppCompatActivity {
         familyCategory = findViewById(R.id.new_task_family_category);
         personalCategory = findViewById(R.id.new_task_personal_category);
 
+        labelCheckedCategory = findViewById(R.id.bottom_bar_label_category);
+        colorCheckedCategory = findViewById(R.id.bottom_bar_circle_category);
+
 
         inboxCategory.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -156,6 +161,10 @@ public class NewTaskActivity extends AppCompatActivity {
                         familyChecker.setVisibility(View.GONE);
                         personalChecker.setVisibility(View.GONE);
                         isChecked.setCheckedStatus(false);
+
+                        labelCheckedCategory.setText(R.string.inbox_label);
+                        labelCheckedCategory.setTextColor(getResources().getColor(R.color.blue));
+                        colorCheckedCategory.setBackground(getResources().getDrawable(R.drawable.shape_circle_inbox_category));
 
                     }
 
@@ -183,6 +192,9 @@ public class NewTaskActivity extends AppCompatActivity {
                         personalChecker.setVisibility(View.GONE);
                         isChecked.setCheckedStatus(false);
 
+                        labelCheckedCategory.setText(R.string.work_label);
+                        labelCheckedCategory.setTextColor(getResources().getColor(R.color.blue));
+                        colorCheckedCategory.setBackground(getResources().getDrawable(R.drawable.shape_circle_work_category));
                     }
 
                 }
@@ -209,6 +221,9 @@ public class NewTaskActivity extends AppCompatActivity {
                         personalChecker.setVisibility(View.GONE);
                         isChecked.setCheckedStatus(false);
 
+                        labelCheckedCategory.setText(R.string.shopping_label);
+                        labelCheckedCategory.setTextColor(getResources().getColor(R.color.blue));
+                        colorCheckedCategory.setBackground(getResources().getDrawable(R.drawable.shape_circle_shopping_category));
                     }
 
                 }
@@ -235,6 +250,9 @@ public class NewTaskActivity extends AppCompatActivity {
                         personalChecker.setVisibility(View.GONE);
                         isChecked.setCheckedStatus(false);
 
+                        labelCheckedCategory.setText(R.string.family_label);
+                        labelCheckedCategory.setTextColor(getResources().getColor(R.color.blue));
+                        colorCheckedCategory.setBackground(getResources().getDrawable(R.drawable.shape_circle_family_category));
                     }
 
                 }
@@ -261,6 +279,9 @@ public class NewTaskActivity extends AppCompatActivity {
                         personalChecker.setVisibility(View.VISIBLE);
                         isChecked.setCheckedStatus(false);
 
+                        labelCheckedCategory.setText(R.string.personal_label);
+                        labelCheckedCategory.setTextColor(getResources().getColor(R.color.blue));
+                        colorCheckedCategory.setBackground(getResources().getDrawable(R.drawable.shape_circle_personal_category));
                     }
 
                 }
@@ -270,5 +291,16 @@ public class NewTaskActivity extends AppCompatActivity {
 
 
 
+    }
+
+    public void getIntentDataFromFAB() {
+        Intent intent = getIntent();
+        VisibilityOfListNewTask data = (VisibilityOfListNewTask)intent.getSerializableExtra("V");
+        layoutCategory = findViewById(R.id.layout_new_task_bottom_list_category);
+        if (data.isVisibility() == 1) {
+            layoutCategory.setVisibility(View.VISIBLE);
+        } else {
+            layoutCategory.setVisibility(View.GONE);
+        }
     }
 }

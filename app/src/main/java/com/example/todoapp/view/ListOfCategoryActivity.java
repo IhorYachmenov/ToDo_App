@@ -15,6 +15,7 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.example.todoapp.R;
 import com.example.todoapp.model.CategoryData;
+import com.example.todoapp.model.VisibilityOfListNewTask;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class ListOfCategoryActivity extends AppCompatActivity {
@@ -71,6 +72,9 @@ public class ListOfCategoryActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View v) {
                         Intent task = new Intent(ListOfCategoryActivity.this, NewTaskActivity.class);
+                        VisibilityOfListNewTask visibility = new VisibilityOfListNewTask();
+                        visibility.setVisibility(0);
+                        task.putExtra("V", visibility);
                         startActivity(task);
                     }
                 });
@@ -79,6 +83,9 @@ public class ListOfCategoryActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View v) {
                         Intent task = new Intent(ListOfCategoryActivity.this, NewTaskActivity.class);
+                        VisibilityOfListNewTask visibility = new VisibilityOfListNewTask();
+                        visibility.setVisibility(1);
+                        task.putExtra("V", visibility);
                         startActivity(task);
                     }
                 });

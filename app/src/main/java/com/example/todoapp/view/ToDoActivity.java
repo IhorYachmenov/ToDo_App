@@ -23,30 +23,23 @@ import com.example.todoapp.R;
 
 import com.example.todoapp.model.CategoryData;
 
+import com.example.todoapp.model.VisibilityOfListNewTask;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 
 
 public class ToDoActivity extends AppCompatActivity {
 
-
-
     FloatingActionButton fab;
 
     // Category activity buttons
-    ConstraintLayout inboxCategory;
-    ConstraintLayout workCategory;
-    ConstraintLayout shoppingCategory;
-    ConstraintLayout familyCategory;
-    ConstraintLayout personalCategory;
+    ConstraintLayout inboxCategory, workCategory, shoppingCategory, familyCategory, personalCategory;
 
     // Object for holding data for category activity
     CategoryData putData;
 
     // Main screen menu
     TextView dotButton;
-
-
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -73,13 +66,12 @@ public class ToDoActivity extends AppCompatActivity {
     }
 
 
-
     public void openDialog() {
 
         fab = findViewById(R.id.fab_main);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onClick(final View view) {
 
                 final Dialog dialog = new Dialog(ToDoActivity.this, android.R.style.Theme_Translucent_NoTitleBar_Fullscreen);
                 dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -105,6 +97,9 @@ public class ToDoActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View v) {
                         Intent task = new Intent(ToDoActivity.this, NewTaskActivity.class);
+                        VisibilityOfListNewTask visibility = new VisibilityOfListNewTask();
+                        visibility.setVisibility(0);
+                        task.putExtra("V", visibility);
                         startActivity(task);
                     }
                 });
@@ -113,6 +108,11 @@ public class ToDoActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View v) {
                         Intent task = new Intent(ToDoActivity.this, NewTaskActivity.class);
+
+
+                        VisibilityOfListNewTask visibility = new VisibilityOfListNewTask();
+                        visibility.setVisibility(1);
+                        task.putExtra("V", visibility);
                         startActivity(task);
                     }
                 });
@@ -236,7 +236,6 @@ public class ToDoActivity extends AppCompatActivity {
         });
 
     }
-
 
     private void showPopupMenu(final View v) {
         PopupMenu popupMenu = new PopupMenu(this, v);
