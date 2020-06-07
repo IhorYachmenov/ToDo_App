@@ -7,14 +7,12 @@ import android.widget.CalendarView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.TimePicker;
-import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.example.todoapp.R;
-import com.example.todoapp.model.CategoryData;
 import com.example.todoapp.model.NewTaskCategory;
 import com.example.todoapp.model.VisibilityOfListNewTask;
 
@@ -40,6 +38,8 @@ public class NewTaskActivity extends AppCompatActivity {
     NewTaskCategory isChecked;
     TextView labelCheckedCategory, colorCheckedCategory;
 
+    // Cancel Button
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,6 +59,8 @@ public class NewTaskActivity extends AppCompatActivity {
         checkCategory();
 
         getIntentDataFromFAB();
+
+        cancelButton();
     }
 
     @Override
@@ -302,5 +304,16 @@ public class NewTaskActivity extends AppCompatActivity {
         } else {
             layoutCategory.setVisibility(View.GONE);
         }
+    }
+
+    public void cancelButton() {
+        TextView cancel = findViewById(R.id.new_task_cancel);
+        cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent cancel = new Intent(NewTaskActivity.this, ToDoActivity.class);
+                startActivity(cancel);
+            }
+        });
     }
 }
