@@ -9,15 +9,17 @@ import android.content.Loader;
 import android.database.Cursor;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.Window;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import androidx.appcompat.app.AlertDialog;
@@ -77,11 +79,11 @@ public class ToDoActivity extends AppCompatActivity implements LoaderManager.Loa
             }
         });
 
-        cursorAdapter = new ReminderCursorAdapter(this, null, 0);  // used to add more customization the list items
-        ListView notesListView = findViewById(R.id.reminderListView);
-        notesListView.setAdapter(cursorAdapter);
+        initLoader();
 
-        getLoaderManager().initLoader(0, null,  this);
+
+
+
     }
 
 
@@ -272,11 +274,8 @@ public class ToDoActivity extends AppCompatActivity implements LoaderManager.Loa
                                 logOut(v);
                                 return true;
                             case R.id.delete:
-                                Toast.makeText(getApplicationContext(),
-                                        getResources().getString(R.string.label_delete_button_main_screen),
-                                        Toast.LENGTH_SHORT).show();
 
-                                getContentResolver().delete(NotesProvider.CONTENT_URI, null, null);
+                                deleteAllNotes();
 
 
                                 return true;
@@ -302,22 +301,23 @@ public class ToDoActivity extends AppCompatActivity implements LoaderManager.Loa
                     @Override
                     public void onClick(DialogInterface dialog, int button) {
                         if (button == DialogInterface.BUTTON_POSITIVE) {
+
                             // clear the database
                             getContentResolver().delete(NotesProvider.CONTENT_URI, null, null);
+                            restartLoader();
 
 
-                            Toast.makeText(ToDoActivity.this,
-                                    getString(R.string.delete_notes),
-                                    Toast.LENGTH_SHORT).show();
                         }
                     }
                 };
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
         builder.setMessage(getString(R.string.are_you_sure))
                 .setPositiveButton(getString(android.R.string.yes), dialogClickListener)
                 .setNegativeButton(getString(android.R.string.no), dialogClickListener)
                 .show();
+
     }
 
     @Override
@@ -342,6 +342,15 @@ public class ToDoActivity extends AppCompatActivity implements LoaderManager.Loa
     @Override
     public void onLoadFinished(android.content.Loader<Cursor> loader, Cursor data) {
         cursorAdapter.swapCursor(data);
+
+        // View or hide the no notes msg
+        TextView noNotesLinearLayout = findViewById(R.id.noNotesMsgTextView);
+        if (cursorAdapter.isEmpty()) {  // there's no notes in the database to view
+            noNotesLinearLayout.setVisibility(View.VISIBLE);
+        }
+        else {   // there's indeed notes in the database to view
+            noNotesLinearLayout.setVisibility(View.GONE);
+        }
     }
 
     @Override
@@ -349,5 +358,19 @@ public class ToDoActivity extends AppCompatActivity implements LoaderManager.Loa
         cursorAdapter.swapCursor(null);
     }
 
+    public void initLoader() {
+        cursorAdapter = new ReminderCursorAdapter(this, null, 0);  // used to add more customization the list items
+        ListView notesListView = findViewById(R.id.reminderListView);
+        notesListView.setAdapter(cursorAdapter);
 
+        notesListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+//                TextView marker = findViewById(R.id.today_marker);
+//                marker.setBackground(getResources().getDrawable(R.drawable.ic_today_marked));
+            }
+        });
+
+        getLoaderManager().initLoader(0, null,  this);
+    }
 }

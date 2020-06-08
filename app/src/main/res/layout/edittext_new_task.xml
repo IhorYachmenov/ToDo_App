@@ -20,28 +20,34 @@
             <TextView
 
                 android:id="@+id/marker_new_task"
-                android:layout_width="28dp"
-                android:layout_height="28dp"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
                 android:layout_marginLeft="@dimen/margin_medium"
-                android:layout_marginTop="@dimen/margin_default"
-                android:background="@drawable/ic_today_marked"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/ic_today_unmarked"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+                app:layout_constraintTop_toTopOf="parent"
+                >
 
             </TextView>
 
 
             <EditText
                 android:id="@+id/reminderEditText"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/margin_medium"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="@dimen/margin_medium"
+                android:layout_marginStart="55dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginEnd="20dp"
                 app:layout_constraintEnd_toStartOf="@id/category_indicator_new_task"
-
+                android:hint="@string/edit_text_hint"
                 app:layout_constraintStart_toEndOf="@id/marker_new_task"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginLeft="55dp"
+                android:layout_marginRight="15dp"
+                android:background="@null"
+                android:textCursorDrawable="@null"
+                android:textColor="@color/blue"/>
 
             <TextView
                 android:id="@+id/category_indicator_new_task"
@@ -49,7 +55,7 @@
 
                 android:layout_height="12dp"
                 android:layout_centerVertical="true"
-                android:layout_marginTop="@dimen/margin_default"
+                android:layout_marginTop="30dp"
                 android:layout_marginRight="@dimen/margin_small"
                 android:background="@drawable/shape_circle_work_category"
                 android:textSize="@dimen/fons_size_new_task_bottom_bur_button"

@@ -1,11 +1,14 @@
 package com.example.todoapp.view;
 
 import android.content.ContentValues;
+import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.CalendarView;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
@@ -55,7 +58,7 @@ public class NewTaskActivity extends AppCompatActivity {
 
     // TextChanger
     EditText editor;
-    TextView done;
+
     private String action;
     private String noteFilter;
     private String oldText;
@@ -83,6 +86,7 @@ public class NewTaskActivity extends AppCompatActivity {
         getIntentDataFromFAB();
 
         cancelButton();
+        doneButton();
 
         Intent intent = getIntent();
 
@@ -114,6 +118,15 @@ public class NewTaskActivity extends AppCompatActivity {
             }
             cursor.close();
         }
+
+
+
+
+
+
+
+
+
     }
 
     @Override
@@ -365,6 +378,17 @@ public class NewTaskActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent cancel = new Intent(NewTaskActivity.this, ToDoActivity.class);
+                startActivity(cancel);
+            }
+        });
+    }
+
+    public void doneButton() {
+        TextView cancel = findViewById(R.id.new_task_done);
+        cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent cancel = new Intent(NewTaskActivity.this, ToDoActivity.class);
                 finishEditing();
                 startActivity(cancel);
             }
@@ -383,16 +407,7 @@ public class NewTaskActivity extends AppCompatActivity {
                     setResult(RESULT_OK);
                 }
                 break;
-            case Intent.ACTION_EDIT:
-                if (noteText.length() == 0) {
-                    deleteNote();
-                } else if (noteText.equals(oldText)) {
-                    setResult(RESULT_CANCELED);
-                } else {
-                    updateNote(noteText);
-                    setResult(RESULT_OK);
-                }
-                break;
+
         }
         finish();
     }

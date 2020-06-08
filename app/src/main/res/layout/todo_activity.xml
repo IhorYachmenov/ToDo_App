@@ -12,6 +12,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/app_bar"
+        android:background="@color/white"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
@@ -26,28 +27,46 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-    <LinearLayout
+    <RelativeLayout
+        android:layout_marginTop="@dimen/margin_default"
         android:id="@+id/center"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="430dp"
         android:layout_above="@id/footer"
         android:layout_below="@id/app_bar"
 
         android:orientation="vertical"
 
+        app:layout_constraintBottom_toTopOf="@+id/footer"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/app_bar">
 
+
         <ListView
+            android:layout_alignParentTop="true"
             android:id="@+id/reminderListView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="430dp"
+            android:divider="@null"
             android:elevation="5dp"
-
             android:entries="@array/dummy_data" />
 
-    </LinearLayout>
+
+        <TextView
+            android:id="@+id/noNotesMsgTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="@dimen/margin_default"
+            android:gravity="center_horizontal"
+            android:text="@string/no_notes"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
+
+
+    </RelativeLayout>
 
 
     <RelativeLayout

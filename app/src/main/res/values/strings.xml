@@ -27,6 +27,9 @@
     <string name="new_task_checked_message">You can choose only one category!</string>
     <string name="are_you_sure">Are you sure?</string>
     <string name="delete_notes">Reminder wad deleted</string>
+    <string name="no_notes">No reminders</string>
+    <string name="edit_text_hint">What do you want to do?</string>
+
 
     <string-array name="dummy_data" >
         <item>One</item>
