@@ -25,6 +25,8 @@
     <string name="new_task_done_button">Done</string>
     <string name="new_task_cancel_button">Cancel</string>
     <string name="new_task_checked_message">You can choose only one category!</string>
+    <string name="are_you_sure">Are you sure?</string>
+    <string name="delete_notes">Reminder wad deleted</string>
 
     <string-array name="dummy_data" >
         <item>One</item>

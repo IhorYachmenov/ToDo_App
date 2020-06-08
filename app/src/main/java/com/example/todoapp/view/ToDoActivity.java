@@ -1,18 +1,26 @@
 package com.example.todoapp.view;
 
 import android.app.Dialog;
+import android.app.LoaderManager;
+import android.content.CursorLoader;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.Loader;
+import android.database.Cursor;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import androidx.appcompat.widget.PopupMenu;
@@ -23,12 +31,18 @@ import com.example.todoapp.R;
 
 import com.example.todoapp.model.CategoryData;
 
+
+import com.example.todoapp.model.NotesProvider;
 import com.example.todoapp.model.VisibilityOfListNewTask;
+import com.example.todoapp.model.adapters.ReminderCursorAdapter;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 
 
-public class ToDoActivity extends AppCompatActivity {
+public class ToDoActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor> {
+
+    private ReminderCursorAdapter cursorAdapter;
+    private static final int RC_EDITOR = 111;
 
     FloatingActionButton fab;
 
@@ -63,6 +77,11 @@ public class ToDoActivity extends AppCompatActivity {
             }
         });
 
+        cursorAdapter = new ReminderCursorAdapter(this, null, 0);  // used to add more customization the list items
+        ListView notesListView = findViewById(R.id.reminderListView);
+        notesListView.setAdapter(cursorAdapter);
+
+        getLoaderManager().initLoader(0, null,  this);
     }
 
 
@@ -100,7 +119,7 @@ public class ToDoActivity extends AppCompatActivity {
                         VisibilityOfListNewTask visibility = new VisibilityOfListNewTask();
                         visibility.setVisibility(0);
                         task.putExtra("V", visibility);
-                        startActivity(task);
+                        startActivityForResult(task, RC_EDITOR);
                     }
                 });
 
@@ -113,7 +132,7 @@ public class ToDoActivity extends AppCompatActivity {
                         VisibilityOfListNewTask visibility = new VisibilityOfListNewTask();
                         visibility.setVisibility(1);
                         task.putExtra("V", visibility);
-                        startActivity(task);
+                        startActivityForResult(task, RC_EDITOR);
                     }
                 });
 
@@ -256,6 +275,10 @@ public class ToDoActivity extends AppCompatActivity {
                                 Toast.makeText(getApplicationContext(),
                                         getResources().getString(R.string.label_delete_button_main_screen),
                                         Toast.LENGTH_SHORT).show();
+
+                                getContentResolver().delete(NotesProvider.CONTENT_URI, null, null);
+
+
                                 return true;
                             default:
                                 return false;
@@ -273,6 +296,58 @@ public class ToDoActivity extends AppCompatActivity {
         finish();
     }
 
+    private void deleteAllNotes() {
+        DialogInterface.OnClickListener dialogClickListener =
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int button) {
+                        if (button == DialogInterface.BUTTON_POSITIVE) {
+                            // clear the database
+                            getContentResolver().delete(NotesProvider.CONTENT_URI, null, null);
+
+
+                            Toast.makeText(ToDoActivity.this,
+                                    getString(R.string.delete_notes),
+                                    Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                };
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage(getString(R.string.are_you_sure))
+                .setPositiveButton(getString(android.R.string.yes), dialogClickListener)
+                .setNegativeButton(getString(android.R.string.no), dialogClickListener)
+                .show();
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == RC_EDITOR) {
+            if (resultCode == RESULT_OK) {
+                restartLoader();
+            }
+        }
+        super.onActivityResult(requestCode, resultCode, data);
+    }
+
+    private void restartLoader() {
+        getLoaderManager().restartLoader(0, null, this);
+    }
+
+    @Override
+    public Loader<Cursor> onCreateLoader(int id, Bundle args) {
+        return new CursorLoader(this, NotesProvider.CONTENT_URI, null, null, null, null);
+    }
+
+    @Override
+    public void onLoadFinished(android.content.Loader<Cursor> loader, Cursor data) {
+        cursorAdapter.swapCursor(data);
+    }
+
+    @Override
+    public void onLoaderReset(android.content.Loader<Cursor> loader) {
+        cursorAdapter.swapCursor(null);
+    }
 
 
 }

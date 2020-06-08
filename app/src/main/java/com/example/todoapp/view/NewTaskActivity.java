@@ -1,20 +1,33 @@
 package com.example.todoapp.view;
 
+import android.content.ContentValues;
 import android.content.Intent;
+import android.database.Cursor;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.CalendarView;
+import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.example.todoapp.R;
+import com.example.todoapp.model.DBOpenHelper;
 import com.example.todoapp.model.NewTaskCategory;
+
+import com.example.todoapp.model.NotesProvider;
 import com.example.todoapp.model.VisibilityOfListNewTask;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 
 public class NewTaskActivity extends AppCompatActivity {
 
@@ -40,6 +53,13 @@ public class NewTaskActivity extends AppCompatActivity {
 
     // Cancel Button
 
+    // TextChanger
+    EditText editor;
+    TextView done;
+    private String action;
+    private String noteFilter;
+    private String oldText;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,6 +69,8 @@ public class NewTaskActivity extends AppCompatActivity {
         time.setIs24HourView(true);
         calendar = findViewById(R.id.calendarView);
         calendar.setMinDate(System.currentTimeMillis());
+
+        editor = findViewById(R.id.reminderEditText);
 
 
 
@@ -61,6 +83,37 @@ public class NewTaskActivity extends AppCompatActivity {
         getIntentDataFromFAB();
 
         cancelButton();
+
+        Intent intent = getIntent();
+
+        Uri uri = intent.getParcelableExtra(NotesProvider.CONTENT_ITEM_TYPE);
+        if (uri == null) {  // opened for new note
+
+            action = Intent.ACTION_INSERT;
+            //setTitle(getString(R.string.editor_title_insert_new_note));
+
+        } else {   // opened for edit note
+
+            action = Intent.ACTION_EDIT;
+           // setTitle(getString(R.string.editor_title_edit_note));
+
+            noteFilter = DBOpenHelper.NOTE_ID + "=" + uri.getLastPathSegment();
+            Cursor cursor = getContentResolver().query(uri, DBOpenHelper.ALL_COLUMNS, noteFilter, null, null);
+            if (cursor.moveToFirst()) {
+                // cursor is not empty
+                oldText = cursor.getString(cursor.getColumnIndex(DBOpenHelper.NOTE_TEXT));
+                String lastChanged = cursor.getString(cursor.getColumnIndex(DBOpenHelper.NOTE_LAST_CHANGED));
+
+                // display the note text
+                editor.setText(oldText);
+
+
+
+
+
+            }
+            cursor.close();
+        }
     }
 
     @Override
@@ -312,8 +365,60 @@ public class NewTaskActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent cancel = new Intent(NewTaskActivity.this, ToDoActivity.class);
+                finishEditing();
                 startActivity(cancel);
             }
         });
     }
+
+    private void finishEditing() {
+        String noteText = editor.getText().toString().trim(); // trim here removes any leading or following white spaces.
+
+        switch (action) {
+            case Intent.ACTION_INSERT:
+                if (noteText.length() == 0) {
+                    setResult(RESULT_CANCELED);
+                } else {
+                    insertNote(noteText);
+                    setResult(RESULT_OK);
+                }
+                break;
+            case Intent.ACTION_EDIT:
+                if (noteText.length() == 0) {
+                    deleteNote();
+                } else if (noteText.equals(oldText)) {
+                    setResult(RESULT_CANCELED);
+                } else {
+                    updateNote(noteText);
+                    setResult(RESULT_OK);
+                }
+                break;
+        }
+        finish();
+    }
+
+    private void insertNote(String noteText) {
+        ContentValues values = new ContentValues();
+        values.put(DBOpenHelper.NOTE_TEXT, noteText);
+        getContentResolver().insert(NotesProvider.CONTENT_URI, values);
+    }
+
+    private void deleteNote() {
+        getContentResolver().delete(NotesProvider.CONTENT_URI, noteFilter, null);
+        Toast.makeText(this, "Notes was deleted", Toast.LENGTH_SHORT).show();
+        setResult(RESULT_OK);
+        finish();
+    }
+
+    private void updateNote(String newNoteText) {
+        ContentValues values = new ContentValues();
+        values.put(DBOpenHelper.NOTE_TEXT, newNoteText);
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", new Locale("en"));
+        Date date = new Date();
+        values.put(DBOpenHelper.NOTE_LAST_CHANGED, dateFormat.format(date));
+        getContentResolver().update(NotesProvider.CONTENT_URI, values, noteFilter, null);
+        Toast.makeText(this, "Notes Was updated", Toast.LENGTH_SHORT).show();
+    }
+
+
 }

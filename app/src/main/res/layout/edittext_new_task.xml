@@ -17,25 +17,22 @@
             android:layout_height="wrap_content">
 
 
+            <TextView
 
+                android:id="@+id/marker_new_task"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:layout_marginLeft="@dimen/margin_medium"
+                android:layout_marginTop="@dimen/margin_default"
+                android:background="@drawable/ic_today_marked"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
-
-                <TextView
-
-                    android:id="@+id/marker_new_task"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    android:layout_marginLeft="@dimen/margin_medium"
-                    android:layout_marginTop="@dimen/margin_default"
-                    android:layout_width="28dp"
-                    android:layout_height="28dp"
-                    android:background="@drawable/ic_today_marked">
-
-
-                </TextView>
+            </TextView>
 
 
             <EditText
+                android:id="@+id/reminderEditText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/margin_medium"
@@ -47,17 +44,17 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
+                android:id="@+id/category_indicator_new_task"
+                android:layout_width="12dp"
 
-                    android:id="@+id/category_indicator_new_task"
-                    android:layout_width="12dp"
-                    android:layout_height="12dp"
-                    android:layout_centerVertical="true"
-                    android:layout_marginRight="@dimen/margin_small"
-                    android:layout_marginTop="@dimen/margin_default"
-                    android:background="@drawable/shape_circle_work_category"
-                    android:textSize="@dimen/fons_size_new_task_bottom_bur_button" />
+                android:layout_height="12dp"
+                android:layout_centerVertical="true"
+                android:layout_marginTop="@dimen/margin_default"
+                android:layout_marginRight="@dimen/margin_small"
+                android:background="@drawable/shape_circle_work_category"
+                android:textSize="@dimen/fons_size_new_task_bottom_bur_button"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -27,6 +27,10 @@
         <activity android:name=".view.NewTaskActivity">
         </activity>
 
+        <provider
+            android:name=".model.NotesProvider"
+            android:authorities="com.example.todoapp.notesprovider"
+            android:exported="false" />
 
 
     </application>
