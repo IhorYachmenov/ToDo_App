@@ -1,5 +1,6 @@
 package com.example.todoapp.view;
 
+import android.app.Activity;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
@@ -7,7 +8,10 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.KeyEvent;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.CalendarView;
 import android.widget.EditText;
@@ -74,6 +78,20 @@ public class NewTaskActivity extends AppCompatActivity {
         calendar.setMinDate(System.currentTimeMillis());
 
         editor = findViewById(R.id.reminderEditText);
+
+        editor.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                layoutData = findViewById(R.id.bottom_calendar);
+                layoutTime = findViewById(R.id.bottom_time);
+                layoutCategory = findViewById(R.id.layout_new_task_bottom_list_category);
+
+                layoutData.setVisibility(View.GONE);
+                layoutTime.setVisibility(View.GONE);
+                layoutCategory.setVisibility(View.GONE);
+                return false;
+            }
+        });
 
 
 
@@ -149,6 +167,7 @@ public class NewTaskActivity extends AppCompatActivity {
         setData.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                hideSoftKeyboard(NewTaskActivity.this);
                 if (setData.getVisibility() == View.GONE) {
                     setData.setBackgroundResource(R.drawable.ic_calendar_off);
                     layoutData.setVisibility(View.GONE);
@@ -164,6 +183,7 @@ public class NewTaskActivity extends AppCompatActivity {
         setTime.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                hideSoftKeyboard(NewTaskActivity.this);
                 if (setTime.getVisibility() == View.GONE) {
                     setTime.setBackgroundResource(R.drawable.ic_alarm_off);
                     layoutTime.setVisibility(View.GONE);
@@ -179,6 +199,7 @@ public class NewTaskActivity extends AppCompatActivity {
         setCategory.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                hideSoftKeyboard(NewTaskActivity.this);
                 if (setCategory.getVisibility() == View.GONE) {
                     layoutCategory.setVisibility(View.GONE);
                 } else {
@@ -433,6 +454,17 @@ public class NewTaskActivity extends AppCompatActivity {
         values.put(DBOpenHelper.NOTE_LAST_CHANGED, dateFormat.format(date));
         getContentResolver().update(NotesProvider.CONTENT_URI, values, noteFilter, null);
         Toast.makeText(this, "Notes Was updated", Toast.LENGTH_SHORT).show();
+    }
+
+    public void hideSoftKeyboard(Activity activity) {
+        InputMethodManager inputMethodManager =
+                (InputMethodManager) activity.getSystemService(
+                        Activity.INPUT_METHOD_SERVICE);
+
+        if (activity != null)
+        inputMethodManager.hideSoftInputFromWindow(
+                activity.getCurrentFocus().getWindowToken(), 0);
+
     }
 
 
